@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "../src/components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
+
 function App() {
 	return (
 		<Router>

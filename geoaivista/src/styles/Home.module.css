@@ -1,68 +1,110 @@
-/** @format */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800;1,900&display=swap");
 
 .homesection {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
-}
-
-.h1 {
-	font-size: 3rem;
-	align-self: center;
+	align-items: center;
+	height: 100vh;
+	background: url("../assets/UploadImagebg2.jpg") no-repeat center center/cover;
+	font-family: "Poppins", sans-serif;
 }
 
 .container {
+	background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
 	padding: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-
-	font-size: 2rem;
+	border-radius: 60px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	width: 600px !important; /* Fixed width with !important */
+	height: 400px !important; /* Fixed height with !important */
+	max-width: none !important; /* Override Bootstrap max-width */
+	margin-top: 0px;
 }
 
-.custum-file-upload {
-	height: 200px;
-	width: 300px;
-	display: flex;
-	flex-direction: column;
-	align-items: space-between;
-	gap: 20px;
+.h1 {
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.dropArea {
+	border: 2px dashed #010102;
+	border-radius: 8px;
+	padding: 20px;
 	cursor: pointer;
-	align-items: center;
-	justify-content: center;
-	border: 2px dashed #cacaca;
-	background-color: rgba(255, 255, 255, 1);
-	padding: 1.5rem;
-	border-radius: 10px;
-	box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+	position: relative;
+	margin-bottom: 10px;
 }
 
-.custum-file-upload .icon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.dropText {
+	color: #000000;
+	font-weight: 500;
 }
 
-.custum-file-upload .icon svg {
-	height: 80px;
-	fill: rgba(75, 85, 99, 1);
+.browseText {
+	color: #000000;
+	font-weight: bold;
+	cursor: pointer;
 }
 
-.custum-file-upload .text {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.fileInput {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
 }
 
-.custum-file-upload .text span {
-	font-weight: 400;
-	color: rgba(75, 85, 99, 1);
+.progressWrapper {
+	margin-top: 10px;
 }
 
-.custum-file-upload input {
-	display: none;
+.uploadedList {
+	margin-top: 20px;
+	text-align: left;
+}
+
+.uploadedFile {
+	padding: 10px;
+	border: 1px solid #28a745;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	background: #dff0d8;
+	color: #3c763d;
+}
+
+.uploadButton {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 1;
+	border-radius: 500px !important;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: 0.3s;
+	border: 1px solid transparent !important;
+	letter-spacing: 2px;
+	min-width: 160px;
+	text-transform: uppercase;
+	white-space: normal;
+	font-weight: 700;
+	text-align: center;
+	padding: 16px 14px 18px;
+	color: #024928 !important;
+	box-shadow: inset 0 0 0 2px #033f23 !important;
+	background-color: transparent !important;
+	height: 48px;
+	margin-top: 20px;
+}
+
+.uploadButton:hover {
+	color: #fff !important;
+	box-shadow: inset 0 0 0 2px #012d18 !important;
+	background-color: #035931 !important;
+	box-shadow: 10px 10px 105px -10px rgb(2, 96, 52) !important;
+}
+
+.textDark {
+	color: #333; /* Darker color for the text */
+	font-weight: 500; /* Optional: Make the text slightly bolder */
 }
