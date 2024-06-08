@@ -1,69 +1,67 @@
-/** @format */
-
 .footer {
+	background-color: #222020;
+	color: #fff;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.topFooter {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #0a0a0a;
-	padding: 20px;
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 20px;
 }
 
-.copyright {
-	color: #fff;
-	font-size: 1rem;
+.contactInfo {
+	margin-left: 440px;
+	display: flex;
+	gap: 70px; /* Adjust the gap between items */
+}
+
+.infoItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.icon {
+	width: 30px; /* Adjust size as needed */
+	height: 30px; /* Adjust size as needed */
+	margin-top: -14px;
 }
 
 .socials {
 	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
-	gap: 2rem;
+	gap: 15px;
 }
 
 .socials a {
-	margin-right: 10px;
-	color: #333;
+	color: #fff;
 	text-decoration: none;
+	transition: color 0.3s ease;
 }
 
 .socials a:hover {
-	color: #666;
+	color: #ddd;
 }
 
-.instagram path {
-	fill: #fff;
+.socials svg {
+	fill: currentColor;
 }
 
-.instagram:hover path {
-	fill: #e1306c;
+.separator {
+	width: 100%;
+	max-width: 1200px;
+	border: 0;
+	border-top: 1px solid #fff;
+	margin: 20px 0;
 }
 
-.github path {
-	fill: #fff;
-}
-
-.github:hover path {
-	fill: #242c34;
-}
-
-.linkedin path {
-	fill: #fff;
-}
-
-.linkedin:hover path {
-	fill: #0a66c2;
-}
-
-@media screen and (max-width: 768px) {
-	.footer {
-		flex-direction: column;
-	}
-
-	.copyright {
-		font-size: 1rem;
-	}
-
-	.socials {
-		margin: 20px 0;
-	}
+.bottomFooter {
+	text-align: center;
+	padding: 0 20px;
 }
