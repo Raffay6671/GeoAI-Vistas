@@ -15,7 +15,19 @@
 	max-width: 1200px;
 	padding: 0 20px;
 }
-
+.button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #222020;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+	margin-left: -30px;
+}
 .contactInfo {
 	margin-left: 440px;
 	display: flex;

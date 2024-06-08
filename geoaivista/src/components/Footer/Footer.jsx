@@ -1,21 +1,21 @@
 /** @format */
 
 import styles from "./Footer.module.css";
-import contactIcon from "../../assets/ContactUs-removebg-preview.png"; // Update the path if needed
-import helpIcon from "../../assets/QuestionMark-removebg-preview.png"; // Update the path if needed
+import contactIcon from "../../assets/ContactUs-removebg-preview.png";
+import helpIcon from "../../assets/QuestionMark-removebg-preview.png";
 
 const Footer = () => (
 	<footer className={styles.footer}>
 		<div className={styles.topFooter}>
 			<div className={styles.contactInfo}>
-				<div className={styles.infoItem}>
+				<button className={styles.button}>
 					<img src={contactIcon} alt="Contact Icon" className={styles.icon} />
-					<p>Contact Us</p>
-				</div>
-				<div className={styles.infoItem}>
+					<span>Contact Us</span>
+				</button>
+				<button className={styles.button}>
 					<img src={helpIcon} alt="Help Icon" className={styles.icon} />
-					<p>Need Help?</p>
-				</div>
+					<span>Need Help?</span>
+				</button>
 			</div>
 			<div className={styles.socials}>
 				<a
