@@ -42,10 +42,15 @@
 
 .icon {
 	width: 30px; /* Adjust size as needed */
-	height: 30px; /* Adjust size as needed */
-	margin-top: -14px;
+	height: 35px; /* Adjust size as needed */
+	margin-top: 0px !important;
 }
-
+.icon1 {
+	width: 30px; /* Adjust size as needed */
+	height: 30px; /* Adjust size as needed */
+	margin-top: 0px !important;
+	margin-right: -10px;
+}
 .socials {
 	display: flex;
 	gap: 15px;

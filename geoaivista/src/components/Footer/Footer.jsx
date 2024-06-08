@@ -1,8 +1,8 @@
 /** @format */
 
 import styles from "./Footer.module.css";
-import contactIcon from "../../assets/ContactUs-removebg-preview.png";
-import helpIcon from "../../assets/QuestionMark-removebg-preview.png";
+import contactIcon from "../../assets/Phone6.png";
+import helpIcon from "../../assets/QuestionMark.png";
 
 const Footer = () => (
 	<footer className={styles.footer}>
@@ -13,7 +13,7 @@ const Footer = () => (
 					<span>Contact Us</span>
 				</button>
 				<button className={styles.button}>
-					<img src={helpIcon} alt="Help Icon" className={styles.icon} />
+					<img src={helpIcon} alt="Help Icon" className={styles.icon1} />
 					<span>Need Help?</span>
 				</button>
 			</div>

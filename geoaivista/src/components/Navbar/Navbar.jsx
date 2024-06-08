@@ -38,7 +38,7 @@ const NavBar = () => {
 					<Nav.Link as={Link} to="/gallery" className={styles.navlink}>
 						Gallery
 					</Nav.Link>
-					<Nav.Link as={Link} to="/about" className={styles.navlink}>
+					<Nav.Link as={Link} to="/about-us" className={styles.navlink}>
 						About
 					</Nav.Link>
 				</Nav>
