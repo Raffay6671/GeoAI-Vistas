@@ -27,7 +27,7 @@ const NavBar = () => {
 	return (
 		<Navbar expand="lg" className={styles.nav}>
 			<Navbar.Brand as={Link} to="/home" className={styles.navbrand}>
-				geoAIvISTAS
+				GeoAIVistas
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">

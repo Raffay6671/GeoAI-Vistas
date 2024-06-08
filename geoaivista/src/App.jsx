@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp/SignUp";
+import PreviewMap from "./pages/PreviewMap/PreviewMap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "../src/components/Footer/Footer";
@@ -19,6 +20,7 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/home" element={<Home />} />
+					<Route path="/preview" element={<PreviewMap />} />
 				</Routes>
 			</main>
 			<Footer />

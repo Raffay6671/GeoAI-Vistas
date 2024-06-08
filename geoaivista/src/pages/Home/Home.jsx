@@ -3,12 +3,14 @@
 // pages/Home/Home.jsx
 import { useState } from "react";
 import { Container, Form, FormGroup, Button, Row, Col, ProgressBar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import styles from "../../styles/Home.module.css";
 
 const Home = () => {
 	const [image, setImage] = useState(null);
 	const [progress, setProgress] = useState(0);
 	const [uploadedFiles, setUploadedFiles] = useState([]);
+	const navigate = useNavigate();
 
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
@@ -24,6 +26,10 @@ const Home = () => {
 				setImage(null);
 			}, 1000);
 		}
+	};
+
+	const handlePreview = () => {
+		navigate("/preview");
 	};
 
 	return (
@@ -62,6 +68,11 @@ const Home = () => {
 					</Button>
 				</Form>
 			</Container>
+			<div className={styles.previewButtonContainer}>
+				<Button onClick={handlePreview} className={styles.previewButton}>
+					Preview>>
+				</Button>
+			</div>
 		</section>
 	);
 };

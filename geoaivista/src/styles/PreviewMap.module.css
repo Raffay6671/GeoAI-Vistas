@@ -1,0 +1,9 @@
+.previewMap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: "Poppins", sans-serif;
+	text-align: center;
+}
