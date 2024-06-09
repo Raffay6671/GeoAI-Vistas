@@ -11,6 +11,7 @@ import Footer from "../src/components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import AboutUs from './pages/AboutUs/AboutUs'; // Adjust the path if necessary
 import RequirementForm from "./pages/RequirementForm/RequirementForm";
+import Gallery from "./pages/Gallery/Gallery";
 
 
 
@@ -27,6 +28,8 @@ function App() {
 					<Route path="/preview" element={<PreviewMap />} />
 					<Route path="/about-us" element={<AboutUs />} /> {/* Add this line */}
 					<Route path="/requirementform" element={<RequirementForm />} />
+					<Route path="/gallery" element={<Gallery />} />
+
 
 
 				</Routes>

@@ -20,7 +20,9 @@
 	max-width: none !important; /* Override Bootstrap max-width */
 	margin-top: 0px;
 }
-.previewButton {
+
+
+.requirementButton {
 	display: inline-block;
   cursor: pointer;
   font-size: 14px;
@@ -42,7 +44,7 @@
   height: 48px;
   margin-top: 20px;
   margin-top: 500px;
-	margin-left: -915px;
+	margin-left: -940px;
 	
 }
 

@@ -29,7 +29,7 @@ const Home = () => {
 	};
 
 	const handlePreview = () => {
-		navigate("/preview");
+		navigate("/requirementform");
 	};
 
 	return (
@@ -68,9 +68,9 @@ const Home = () => {
 					</Button>
 				</Form>
 			</Container>
-			<div className={styles.previewButtonContainer}>
-				<Button onClick={handlePreview} className={styles.previewButton}>
-					Preview>>
+			<div className={styles.requirementButtonContainer}>
+				<Button onClick={handlePreview} className={styles.requirementButton}>
+					RequirementForm
 				</Button>
 			</div>
 		</section>

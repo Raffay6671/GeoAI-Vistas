@@ -7,7 +7,7 @@ const PreviewPage = () => {
   const navigate = useNavigate();
 
   const handleRequirementForm = () => {
-    navigate('/requirementform');
+    navigate('/gallery');
   };
 
   return (
@@ -18,8 +18,8 @@ const PreviewPage = () => {
           {/* Add your map preview content here */}
         </div>
       </div>
-      <button onClick={handleRequirementForm} className={styles.requirementButton}>
-        RequirementForm >>
+      <button onClick={handleRequirementForm} className={styles.galleryButton}>
+        Gallery
       </button>
     </div>
   );

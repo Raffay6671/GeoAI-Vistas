@@ -27,7 +27,7 @@
   background: #ccc; /* Example background color */
 }
 
-.requirementButton {
+.galleryButton {
   display: inline-block;
   cursor: pointer;
   font-size: 14px;
@@ -50,7 +50,7 @@
   margin-top: 20px;
 }
 
-.requirementButton:hover {
+.galleryButton:hover {
   color: #fff !important;
   box-shadow: inset 0 0 0 2px #079c57 !important;
   background-color: #079c57 !important;

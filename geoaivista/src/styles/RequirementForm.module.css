@@ -10,13 +10,13 @@
   }
   
   .formContainer {
-    background-color: rgba(255, 255, 255, 0.378);
+    background-color: rgba(255, 255, 255, 0.57);
     padding: 20px;
     border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    
     max-width: 800px;
-    height: 450px;
+    height: 480px;
     text-align: center;
   }
   
@@ -30,7 +30,7 @@
     margin-bottom: 20px;
   }
   
-  .optionsContainer {
+.optionsContainer {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
@@ -38,6 +38,19 @@
   
   .option {
     text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+
+
+.option:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .selected {
+    border: 2px solid #4CAF50;
   }
   
   .icon {
