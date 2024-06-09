@@ -1,9 +1,59 @@
-.previewMap {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	font-family: "Poppins", sans-serif;
-	text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800;1,900&display=swap");
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../assets/UploadImagebg2.jpg') no-repeat center center/cover;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
+
+.content {
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+}
+
+.mapPreview {
+  /* Add styles for the map preview content */
+  margin: 20px 0;
+  height: 400px; /* Example height */
+  background: #ccc; /* Example background color */
+}
+
+.requirementButton {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px !important;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: 0.3s;
+  border: 1px solid transparent !important;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 14px 18px;
+  color: #fafafa !important;
+  box-shadow: inset 0 0 0 2px #bdbdbd !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  height: 48px;
+  margin-top: 20px;
+}
+
+.requirementButton:hover {
+  color: #fff !important;
+  box-shadow: inset 0 0 0 2px #079c57 !important;
+  background-color: #079c57 !important;
+  box-shadow: 10px 10px 105px -10px rgba(7, 156, 87, 1) !important;
+}
+
