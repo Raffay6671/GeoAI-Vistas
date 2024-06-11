@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignUp.module.css";
-
 export default function SignUp() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
@@ -23,11 +22,27 @@ export default function SignUp() {
 		const email = emailRef.current.value;
 		const password = passwordRef.current.value;
 
-		console.log(email, password);
+		try {
+			const response = await fetch("http://localhost:5000/api/users/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			});
 
-		setError("");
-		setLoading(true);
-		navigate("/login");
+			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(data.message || "Something went wrong!");
+			} else {
+				navigate("/login");
+			}
+		} catch (error) {
+			setError(error.message);
+			setLoading(false);
+			return;
+		}
 	}
 
 	return (

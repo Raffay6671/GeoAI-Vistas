@@ -4,8 +4,11 @@ import { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/Login.module.css";
+import { useUser } from "../../context/UserContext";
 
 export default function Login() {
+	const { setToken, setLoggedIn } = useUser();
+
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
@@ -18,8 +21,33 @@ export default function Login() {
 		e.preventDefault();
 		const email = emailRef.current.value;
 		const password = passwordRef.current.value;
-		console.log(email, password);
-		setError("");
+
+		if (email === "" || password === "") {
+			return setError("Email and password are required");
+		}
+
+		try {
+			const response = await fetch("http://localhost:5000/api/users/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			});
+
+			if (!response.ok) {
+				const data = await response.json();
+				return setError(data.message);
+			} else {
+				const data = await response.json();
+				setToken(data.token);
+				setLoggedIn(true);
+			}
+		} catch (error) {
+			console.error("Error:", error);
+			return setError("Something went wrong. Please try again later.");
+		}
+
 		setLoading(true);
 		navigate("/home");
 	}

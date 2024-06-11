@@ -19,16 +19,18 @@
 .card {
 	background: rgba(255, 255, 255, 0.9);
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	padding: 2rem;
 	width: 100%;
 	max-width: 500px;
 	border: 1px solid #000;
+
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.card:focus{
-    outline: none;
-    border: 2px solid #079c57;
+.card:focus {
+	outline: none;
+	border: 2px solid #079c57;
 }
 
 .formGroup {
@@ -44,7 +46,7 @@
 
 .button:hover {
 	transform: scale(1.05);
-    background-color: #079c57;
+	background-color: #079c57;
 }
 
 .right {

@@ -1,3 +1,5 @@
+/** @format */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800;1,900&display=swap");
 
 .homesection {
@@ -5,63 +7,50 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background: url("../assets/UploadImagebg2.jpg") no-repeat center center/cover;
+	position: relative;
 	font-family: "Poppins", sans-serif;
+	overflow: hidden;
+}
+
+.homesection::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url("../assets/UploadImagebg2.jpg") no-repeat center center/cover;
+	filter: blur(6px); /* Adjust the blur radius as needed */
+	z-index: -1; /* Ensure the background is behind the content */
 }
 
 .container {
-	background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
-	padding: 20px;
+	background: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
+	padding: 3rem;
 	border-radius: 60px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	width: 600px !important; /* Fixed width with !important */
-	height: 400px !important; /* Fixed height with !important */
 	max-width: none !important; /* Override Bootstrap max-width */
 	margin-top: 0px;
-}
-
-
-.requirementButton {
-	display: inline-block;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px !important;
-  transition-property: background-color, border-color, color, box-shadow, filter;
-  transition-duration: 0.3s;
-  border: 1px solid transparent !important;
-  letter-spacing: 2px;
-  min-width: 160px;
-  text-transform: uppercase;
-  white-space: normal;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px 14px 18px;
-  color: #fafafa !important;
-  box-shadow: inset 0 0 0 2px #bdbdbd !important;
-  background: rgba(255, 255, 255, 0.3) !important;
-  height: 48px;
-  margin-top: 20px;
-  margin-top: 500px;
-	margin-left: -940px;
 	
 }
 
 .previewButton:hover {
 	color: #fff !important;
-  box-shadow: inset 0 0 0 2px #079c57 !important;
-  background-color: #079c57 !important;
-  box-shadow: 10px 10px 105px -10px rgba(7, 156, 87, 1) !important;
+	box-shadow: inset 0 0 0 2px #079c57 !important;
+	background-color: #079c57 !important;
+	box-shadow: 10px 10px 105px -10px rgba(7, 156, 87, 1) !important;
 }
 
 .h1 {
 	margin-bottom: 20px;
-	color: #333;
+	color: #079c57;
+	font-weight: 500;
 }
 
 .dropArea {
-	border: 2px dashed #010102;
+	border: 2px dashed #fff;
 	border-radius: 8px;
 	padding: 20px;
 	cursor: pointer;
@@ -70,12 +59,12 @@
 }
 
 .dropText {
-	color: #000000;
+	color: #fff;
 	font-weight: 500;
 }
 
 .browseText {
-	color: #000000;
+	color: #fff;
 	font-weight: bold;
 	cursor: pointer;
 }
@@ -124,21 +113,78 @@
 	font-weight: 700;
 	text-align: center;
 	padding: 16px 14px 18px;
-	color: #024928 !important;
-	box-shadow: inset 0 0 0 2px #033f23 !important;
-	background-color: transparent !important;
+	color: #fff !important;
+	background-color: #035931 !important;
 	height: 48px;
-	margin-top: 20px;
+	margin-top: 3rem;
 }
 
 .uploadButton:hover {
 	color: #fff !important;
 	box-shadow: inset 0 0 0 2px #012d18 !important;
-	background-color: #035931 !important;
 	box-shadow: 10px 10px 105px -10px rgb(2, 96, 52) !important;
+	transform: scale(0.96);
 }
 
-.textDark {
-	color: #333; /* Darker color for the text */
+.textLight {
+	color: #fff !important; /* Darker color for the text */
 	font-weight: 500; /* Optional: Make the text slightly bolder */
+}
+
+.preview {
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	gap: 4rem;
+	padding: 10px;
+	border-radius: 15px;
+	border-bottom: 1px solid #fff;
+}
+
+.imgWrapper {
+	width: 100px;
+	height: 100%;
+	object-fit: contain;
+}
+
+.preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.previewContent {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	flex-direction: row;
+	gap: 2rem;
+	color: #fff;
+}
+
+.imgName {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.removeButton {
+	display: inline-block;
+	cursor: pointer;
+	font-size: 10px;
+	line-height: 1;
+	border-radius: 50px !important;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: 0.3s;
+	border: 1px solid transparent !important;
+	letter-spacing: 2px;
+	min-width: 160px;
+	text-transform: uppercase;
+	white-space: normal;
+	font-weight: 700;
+	text-align: center;
+	padding: 16px 14px 18px;
+	color: #fff !important;
+	background-color: #d9534f !important;
+	height: 48px;
 }

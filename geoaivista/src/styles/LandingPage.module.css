@@ -6,8 +6,23 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	position: relative;
+	font-family: "Poppins", sans-serif;
+	overflow: hidden;
+}
+
+.wrapper::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
 		url("../assets/satellite.jpg") no-repeat center center/cover;
+	filter: blur(5px); /* Adjust the blur radius as needed */
+	-webkit-filter: blur(5px);
+	z-index: -1; /* Ensure the background is behind the content */
 }
 
 .content {
@@ -21,7 +36,7 @@
 
 .title {
 	color: white;
-	font-size: 2.5rem;
+	font-size: 3rem;
 }
 
 .titleFocus {
@@ -30,7 +45,7 @@
 
 .subtitle {
 	color: white;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	margin-bottom: 2rem;
 }
 

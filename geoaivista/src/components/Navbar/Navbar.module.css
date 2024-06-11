@@ -11,6 +11,12 @@
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: #fff;
+	text-decoration: none;
+}
+
+.navbrand img {
+	width: 50px;
+	height: 50px;
 }
 
 .navbrand:hover {
@@ -22,10 +28,16 @@
 	color: #fff;
 	text-decoration: none;
 	margin: 0 1rem;
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 .navlink:hover {
 	color: #355e3b;
+}
+
+.navlink.active {
+	color: #355e3b !important;
 }
 
 /* LOGIN BUTTON */
@@ -118,6 +130,13 @@
 .sign svg path {
 	fill: white;
 }
+
+.centerNav {
+	display: flex;
+	justify-content: center;
+	flex: 1;
+}
+
 /* text */
 .text {
 	position: absolute;

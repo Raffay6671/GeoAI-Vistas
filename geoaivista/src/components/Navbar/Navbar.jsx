@@ -1,12 +1,14 @@
 /** @format */
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { useUser } from "../../context/UserContext";
+import logo from "../../assets/logo.png";
 
 // eslint-disable-next-line react/prop-types
 const NavBar = () => {
-	const [currentUser, setCurrentUser] = useState(null);
+	const { setToken, loggedIn, setLoggedIn } = useUser();
 	const navigate = useNavigate();
 
 	const handleLogin = () => {
@@ -14,28 +16,32 @@ const NavBar = () => {
 	};
 
 	const handleLogout = () => {
+		setToken(null);
+		setLoggedIn(false);
+		localStorage.removeItem("token");
 		navigate("/");
 	};
 
-	useEffect(() => {
-		const user = localStorage.getItem("user");
-		if (user) {
-			setCurrentUser(user);
-		}
-	}, []);
+	useEffect(() => {}, [loggedIn]);
 
 	return (
 		<Navbar expand="lg" className={styles.nav}>
-			<Navbar.Brand as={Link} to="/home" className={styles.navbrand}>
-				GeoAIVistas
+			<Navbar.Brand as={Link} to={loggedIn ? "/home" : "/login"} className={styles.navbrand}>
+				<img src={logo} height="30" alt="logo" />
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
-				<Nav className="me-auto">
-					<Nav.Link as={Link} to="/home" className={styles.navlink}>
+				<Nav className={styles.centerNav}>
+					<Nav.Link
+						as={Link}
+						to={loggedIn ? "/home" : "/login"}
+						className={styles.navlink}>
 						Home
 					</Nav.Link>
-					<Nav.Link as={Link} to="/gallery" className={styles.navlink}>
+					<Nav.Link
+						as={Link}
+						to={loggedIn ? "/gallery" : "/login"}
+						className={styles.navlink}>
 						Gallery
 					</Nav.Link>
 					<Nav.Link as={Link} to="/about-us" className={styles.navlink}>
@@ -43,7 +49,7 @@ const NavBar = () => {
 					</Nav.Link>
 				</Nav>
 				<Nav>
-					{currentUser ? (
+					{loggedIn ? (
 						<button className={styles.Btn} onClick={handleLogout}>
 							<div className={styles.sign}>
 								<svg viewBox="0 0 512 512">

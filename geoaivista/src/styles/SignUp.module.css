@@ -30,7 +30,7 @@
 .card {
 	background: rgba(255, 255, 255, 0.9);
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 	padding: 2rem;
 	width: 100%;
 	max-width: 500px;
