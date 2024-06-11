@@ -81,4 +81,10 @@
 .bottomFooter {
 	text-align: center;
 	padding: 0 20px;
+	
+}
+
+.styles.LastLine{
+
+		margin-left: 400px !important;
 }

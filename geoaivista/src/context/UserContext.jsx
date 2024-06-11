@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const UserContext = createContext();
@@ -10,8 +10,18 @@ export function useUser() {
 }
 
 export function UserProvider({ children }) {
-	const [token, setToken] = useState(null);
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [token, setToken] = useState(localStorage.getItem("token"));
+	const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
+
+	useEffect(() => {
+		if (token) {
+			localStorage.setItem("token", token);
+			setLoggedIn(true);
+		} else {
+			localStorage.removeItem("token");
+			setLoggedIn(false);
+		}
+	}, [token]);
 
 	return (
 		<UserContext.Provider value={{ token, setToken, loggedIn, setLoggedIn }}>

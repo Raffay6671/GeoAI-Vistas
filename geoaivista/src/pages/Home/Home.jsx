@@ -1,6 +1,3 @@
-/** @format */
-
-// pages/Home/Home.jsx
 import { useState } from "react";
 import { Container, Form, FormGroup, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -8,13 +5,15 @@ import styles from "../../styles/Home.module.css";
 import { useUser } from "../../context/UserContext";
 
 const Home = () => {
-	const { token } = useUser();
+	const { token, setToken, loggedIn, setLoggedIn } = useUser();
 	const [image, setImage] = useState(null);
 	const [uploadedFiles, setUploadedFiles] = useState([]);
+	const [alertMessage, setAlertMessage] = useState("");
 	const navigate = useNavigate();
 
 	const handleImageChange = (e) => {
 		setImage(e.target.files[0]);
+		setAlertMessage(""); // Clear alert message on new file select
 	};
 
 	const handleRemoveImg = () => {
@@ -24,6 +23,12 @@ const Home = () => {
 
 	const handleUpload = async () => {
 		if (image) {
+			const fileType = image.type;
+			if (fileType !== "image/jpeg" && fileType !== "image/png") {
+				setAlertMessage("Wrong File Type! Please upload a JPEG or PNG image.");
+				return;
+			}
+
 			try {
 				if (!token) throw new Error("No token found");
 
@@ -53,6 +58,12 @@ const Home = () => {
 					console.error("Error:", error);
 				}
 			} catch (error) {
+				if (error.message === "No token found") {
+					// Log out the user and navigate to login page if token is missing
+					setToken(null);
+					setLoggedIn(false);
+					navigate("/login");
+				}
 				console.error("Error:", error);
 			}
 		}
@@ -62,6 +73,7 @@ const Home = () => {
 		<section className={styles.homesection}>
 			<Container className={styles.container}>
 				<h1 className={styles.h1}>Upload Image</h1>
+				{alertMessage && <div className={styles.alert}>{alertMessage}</div>}
 				<Form>
 					<FormGroup className="mb-3">
 						<div className={styles.dropArea}>

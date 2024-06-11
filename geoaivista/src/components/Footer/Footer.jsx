@@ -59,6 +59,8 @@ const Footer = () => (
 		<hr className={styles.separator} />
 		<div className={styles.bottomFooter}>
 			<p>National University of Computing and Emerging Sciences, Islamabad</p>
+		</div>
+		<div className={styles.LastLine}>
 			<p>&copy; 2024 GeoAIVistas. All Rights Reserved.</p>
 		</div>
 	</footer>
