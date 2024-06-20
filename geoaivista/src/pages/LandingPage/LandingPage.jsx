@@ -12,7 +12,7 @@ const LandingPage = () => {
 			<Container>
 				<div className={styles.content}>
 					<h1 className={styles.title}>
-						Welcome to <span className={styles.titleFocus}>GeoAIvISTAS</span>
+						Welcome to <span className={styles.titleFocus}>GeoAI: Vistas</span>
 					</h1>
 					<p className={styles.subtitle}>
 						Revolutionizing Satellite Image Processing and Map Generation
