@@ -10,12 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@pqina/react-pintura": "^9.0.3",
     "bootstrap": "^5.3.3",
+    "konva": "^9.3.15",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-konva": "^18.2.10",
+    "react-router-dom": "^6.23.1",
+    "react-use-image": "^0.2.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
