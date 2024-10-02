@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { Stage, Layer, Image as KonvaImage, Line } from "react-konva";
@@ -75,20 +76,66 @@ const RequirementForm = () => {
   };
 
   // Download the invisible layer as an image
-  const downloadMaskedImage = (dataURL) => {
-    const link = document.createElement("a");
-    link.href = dataURL;
-    link.download = "maskedImage.png"; // File name for the downloaded image
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link); // Remove the link after download
-  };
+  // const downloadMaskedImage = (dataURL) => {
+  //   const link = document.createElement("a");
+  //   link.href = dataURL;
+  //   link.download = "maskedImage.png"; // File name for the downloaded image
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link); // Remove the link after download
+  // };
 
   // Store the invisible layer in context and download the image
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
+  //   const invisibleLayer = invisibleLayerRef.current.toDataURL(); // Get the invisible layer as an image
+  //   setInvisibleLayer(invisibleLayer); // Store it in the context
+  //   // downloadMaskedImage(invisibleLayer); // Trigger the download of the image
+  //   console.log("Selected Option:", selectedOption);
+  //   navigate("/preview", { state: { selectedOption } });
+  // };
+  const dataURLToBlob = (dataURL) => {
+    const byteString = atob(dataURL.split(",")[1]);
+    const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
+  };
+  const handleSubmit = async () => {
     const invisibleLayer = invisibleLayerRef.current.toDataURL(); // Get the invisible layer as an image
     setInvisibleLayer(invisibleLayer); // Store it in the context
-    downloadMaskedImage(invisibleLayer); // Trigger the download of the image
+    const maskBlob = dataURLToBlob(invisibleLayer);
+
+    // Backend API call to save the image
+    const formData = new FormData();
+    formData.append("image", uploadedImage);
+    // formData.append("mask", invisibleLayer);
+    formData.append("mask", maskBlob, "mask.png"); // Append the mask as a file
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5006/inpaint",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          responseType: "blob",
+        }
+      );
+      // Store the Blob in sessionStorage
+      const maskBlob = response.data;
+      const blobUrl = URL.createObjectURL(maskBlob); // Create a URL for the Blob
+      sessionStorage.setItem("maskBlobUrl", blobUrl); // Store the blob URL in sessionStorage
+
+      setUploadStatus("Files uploaded successfully!");
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error uploading files.", error);
+    }
+
     console.log("Selected Option:", selectedOption);
     navigate("/preview", { state: { selectedOption } });
   };

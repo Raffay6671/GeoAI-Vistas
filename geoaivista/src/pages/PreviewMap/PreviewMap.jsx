@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../../styles/PreviewMap.module.css";
-import mapPreviewImage from '../../assets/UserInput.jpg'; // Import the image
+import mapPreviewImage from "../../assets/UserInput.jpg"; // Import the image
 
 const PreviewPage = () => {
   const navigate = useNavigate();
@@ -15,9 +15,19 @@ const PreviewPage = () => {
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
   const imageRef = useRef(null);
 
+  const [maskImageUrl, setMaskImageUrl] = useState(null);
+
+  useEffect(() => {
+    // Retrieve the Blob URL from sessionStorage
+    const blobUrl = sessionStorage.getItem("maskBlobUrl");
+    setMaskImageUrl(blobUrl);
+  }, []);
+
   const handleRequirementForm = () => {
     if (isFileSaved) {
-      navigate('/gallery', { state: { image: mapPreviewImage, name: mapName } });
+      navigate("/gallery", {
+        state: { image: mapPreviewImage, name: mapName },
+      });
     } else {
       setPopupMessage("Please save the file first.");
       setShowPopup(true);
@@ -62,13 +72,19 @@ const PreviewPage = () => {
   const handleMouseDown = (e) => {
     e.preventDefault();
     setIsDragging(true);
-    setInitialPosition({ x: e.clientX - position.x, y: e.clientY - position.y });
+    setInitialPosition({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
   };
 
   const handleMouseMove = (e) => {
     if (isDragging) {
       e.preventDefault();
-      setPosition({ x: e.clientX - initialPosition.x, y: e.clientY - initialPosition.y });
+      setPosition({
+        x: e.clientX - initialPosition.x,
+        y: e.clientY - initialPosition.y,
+      });
     }
   };
 
@@ -85,9 +101,9 @@ const PreviewPage = () => {
   useEffect(() => {
     const imageElement = imageRef.current;
     if (imageElement) {
-      imageElement.addEventListener('wheel', handleWheel);
+      imageElement.addEventListener("wheel", handleWheel);
       return () => {
-        imageElement.removeEventListener('wheel', handleWheel);
+        imageElement.removeEventListener("wheel", handleWheel);
       };
     }
   }, []);
@@ -102,18 +118,36 @@ const PreviewPage = () => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+          style={{ cursor: isDragging ? "grabbing" : "grab" }}
         >
-          <img
-            src={mapPreviewImage}
-            alt="Map Preview"
-            className={styles.mapImage}
-            ref={imageRef}
-            style={{
-              transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
-              transformOrigin: 'center center',
-            }}
-          />
+          {maskImageUrl && (
+            <img
+              src={maskImageUrl}
+              alt="Map Preview"
+              className={styles.mapImage}
+              ref={imageRef}
+              style={{
+                transform: `scale(${zoom}) translate(${position.x / zoom}px, ${
+                  position.y / zoom
+                }px)`,
+                transformOrigin: "center center",
+              }}
+            />
+          )}
+          {!maskImageUrl && (
+            <img
+              src={mapPreviewImage}
+              alt="Map Preview"
+              className={styles.mapImage}
+              ref={imageRef}
+              style={{
+                transform: `scale(${zoom}) translate(${position.x / zoom}px, ${
+                  position.y / zoom
+                }px)`,
+                transformOrigin: "center center",
+              }}
+            />
+          )}
         </div>
         <div className={styles.newControls}>
           <input
@@ -135,7 +169,10 @@ const PreviewPage = () => {
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <button onClick={handleRequirementForm} className={styles.galleryButton}>
+        <button
+          onClick={handleRequirementForm}
+          className={styles.galleryButton}
+        >
           Gallery
         </button>
         <button onClick={handleRegenerate} className={styles.regenerateButton}>

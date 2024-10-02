@@ -5,7 +5,7 @@
 	background-size: cover;
 	background-position: center;
 	width: 100%;
-	height: 100vh;
+	height: 120vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,7 +18,7 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	max-width: 900px;
 	text-align: center;
-	height: auto;
+	height: 90vh;
 
 	display: flex;
 	flex-direction: column;
@@ -59,36 +59,37 @@
 	border: 1px solid #ddd; /* Border around the canvas */
 }
 
+
+
 .toolbar {
-	width: 100%;
 	display: flex;
-	justify-content: space-around; /* Spread out the toolbar items */
-	margin-bottom: 20px;
-	margin-top: 10px;
-}
-
-.brush-settings {
-	display: flex;
-	align-items: center;
-}
-
-
-.undo-btn .undo-icon {
-	font-size: 24px !important; /* Add !important to ensure it overrides other styles */
-	color: #000000 !important; /* Make sure the color is black */
+	justify-content: space-between; /* Ensure space between elements */
+	align-items: center; /* Align items vertically in the center */
+	width: 100%; /* Make the toolbar take the full width */
+	padding: 10px; /* Add padding to give it some breathing room */
+	background-color: rgba(255, 255, 255, 0.868); /* Set background for visibility */
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: shadow for visual separation */
   }
   
-.brush-settings input[type="color"] {
-	border: none;
-	cursor: pointer;
-	margin-left: 10px;
-}
-
-.brush-settings input[type="range"] {
-	width: 100px;
-	cursor: pointer;
-	margin-left: 10px;
-}
+  .undo-btn {
+	margin-right: 10px; /* Adjust margin to keep the undo button visible */
+	
+  }
+  
+  .brush-settings {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  }
+  
+  .brush-settings label {
+	margin-right: 10px; /* Space between labels and inputs */
+  }
+  
+  .brush-settings input {
+	margin-right: 10px; /* Space between inputs */
+  }
+  
 
 .submitButton {
 	padding: 10px 20px;
