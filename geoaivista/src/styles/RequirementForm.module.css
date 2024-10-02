@@ -1,0 +1,109 @@
+/** @format */
+
+.background {
+	background-image: url("../assets/RequirementForm.jpg");
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.formContainer {
+	background-color: rgba(0, 0, 0, 0.9);
+	padding: 20px;
+	border-radius: 30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	max-width: 900px;
+	text-align: center;
+	height: auto;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	color: #45a049;
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.subtitle {
+	color: #fff;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.imageEditor {
+	width: 100%;
+	max-width: 800px;
+	height: 700px; /* Adjust height for editor */
+	background-color: #ffffff; /* Dark background for the editor */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	border-radius: 15px;
+	position: relative;
+	overflow: hidden;
+}
+
+.canvas-container {
+	width: 700px;
+	height: 500px;
+	border: 1px solid #ddd; /* Border around the canvas */
+}
+
+.toolbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-around; /* Spread out the toolbar items */
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+.brush-settings {
+	display: flex;
+	align-items: center;
+}
+
+
+.undo-btn .undo-icon {
+	font-size: 24px !important; /* Add !important to ensure it overrides other styles */
+	color: #000000 !important; /* Make sure the color is black */
+  }
+  
+.brush-settings input[type="color"] {
+	border: none;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.brush-settings input[type="range"] {
+	width: 100px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.submitButton {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #3d8540;
+	color: white;
+	border: none;
+	border-radius: 3rem;
+	cursor: pointer;
+	margin-top: 40px;
+}
+
+.submitButton:hover {
+	background-color: rgba(69, 160, 73);
+	box-shadow: inset 0 0 0 2px #012d18 !important;
+	box-shadow: 10px 10px 105px -10px rgb(2, 96, 52) !important;
+	transform: scale(0.96);
+}
