@@ -8,6 +8,8 @@ import { Stage, Layer, Image as KonvaImage, Line } from "react-konva";
 import styles from "../../styles/RequirementForm.module.css";
 
 const RequirementForm = () => {
+  const [shapeType, setShapeType] = useState(""); // New state to track selected shape
+
   const [selectedOption, setSelectedOption] = useState("");
   const { uploadedImage, setInvisibleLayer } = useUser(); // Access uploaded image and set invisible layer in context
   const [image, setImage] = useState(null); // Loaded image object for drawing
@@ -76,14 +78,14 @@ const RequirementForm = () => {
   };
 
   // Download the invisible layer as an image
-  // const downloadMaskedImage = (dataURL) => {
-  //   const link = document.createElement("a");
-  //   link.href = dataURL;
-  //   link.download = "maskedImage.png"; // File name for the downloaded image
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link); // Remove the link after download
-  // };
+  const downloadMaskedImage = (dataURL) => {
+    const link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "maskedImage.png"; // File name for the downloaded image
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Remove the link after download
+  };
 
   // Store the invisible layer in context and download the image
   // const handleSubmit = () => {
@@ -94,52 +96,92 @@ const RequirementForm = () => {
   //   navigate("/preview", { state: { selectedOption } });
   // };
   const dataURLToBlob = (dataURL) => {
-    const byteString = atob(dataURL.split(',')[1]);
-    const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+    const byteString = atob(dataURL.split(",")[1]);
+    const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
     for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+      ia[i] = byteString.charCodeAt(i);
     }
-    return new Blob([ab], { type: mimeString });
-};
+    return new Blob([ab], { type: mimeString });
+  };
+
+  // *****************************THIS IS THE OLD HANDLE SUBMIT FUNCTION BY KHADIJA FOR BACKEND FUNCTIONALITY*******UNCOMMENT THIS FOR WORKING
+  // const handleSubmit = async () => {
+  //   const invisibleLayer = invisibleLayerRef.current.toDataURL(); // Get the invisible layer as an image
+  //   setInvisibleLayer(invisibleLayer); // Store it in the context
+  //   const maskBlob = dataURLToBlob(invisibleLayer);
+
+  //   // Backend API call to save the image
+  //   const formData = new FormData();
+  //   formData.append("image", uploadedImage);
+  //   // formData.append("mask", invisibleLayer);
+  //   formData.append("mask", maskBlob, "mask.png"); // Append the mask as a file
+
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:5006/inpaint",
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //         responseType: "blob",
+  //       }
+  //     );
+  //     // Store the Blob in sessionStorage
+  //     const maskBlob = response.data;
+  //     const blobUrl = URL.createObjectURL(maskBlob); // Create a URL for the Blob
+  //     sessionStorage.setItem("maskBlobUrl", blobUrl); // Store the blob URL in sessionStorage
+
+  //     setUploadStatus("Files uploaded successfully!");
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error("Error uploading files.", error);
+  //   }
+
+  //   console.log("Selected Option:", selectedOption);
+  //   navigate("/preview", { state: { selectedOption } });
+  // };
+
+  // *****************THIS IS DONE BY RAFFAY TO CHECK DIMENSIONS LOCALLY********************
+
   const handleSubmit = async () => {
-		const invisibleLayer = invisibleLayerRef.current.toDataURL(); // Get the invisible layer as an image
-		setInvisibleLayer(invisibleLayer); // Store it in the context
+    const invisibleLayer = invisibleLayerRef.current.toDataURL(); // Get the invisible layer as an image
+    setInvisibleLayer(invisibleLayer); // Store it in the context
+
+    // Download the invisible layer as an image
+    downloadMaskedImage(invisibleLayer); // Call the function to download the masked image
+
     const maskBlob = dataURLToBlob(invisibleLayer);
+    const formData = new FormData();
+    formData.append("image", uploadedImage);
+    formData.append("mask", maskBlob, "mask.png");
 
-		// Backend API call to save the image
-		const formData = new FormData();
-		formData.append("image", uploadedImage);
-		// formData.append("mask", invisibleLayer);
-    formData.append("mask", maskBlob, "mask.png"); // Append the mask as a file
+    try {
+      const response = await axios.post(
+        "http://localhost:5006/inpaint",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          responseType: "blob",
+        }
+      );
+      const maskBlob = response.data;
+      const blobUrl = URL.createObjectURL(maskBlob);
+      sessionStorage.setItem("maskBlobUrl", blobUrl);
 
-		try {
-			const response = await axios.post(
-				"http://localhost:5006/inpaint",
-				formData,
-				{
-					headers: {
-						"Content-Type": "multipart/form-data",
-					},
-          responseType:"blob"
-				}
-			);
-      // Store the Blob in sessionStorage
-    const maskBlob = response.data;
-    const blobUrl = URL.createObjectURL(maskBlob);  // Create a URL for the Blob
-    sessionStorage.setItem("maskBlobUrl", blobUrl); // Store the blob URL in sessionStorage
+      setUploadStatus("Files uploaded successfully!");
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error uploading files.", error);
+    }
 
-			setUploadStatus("Files uploaded successfully!");
-			console.log(response.data);
-		} catch (error) {
-			console.error("Error uploading files.", error);
-		}
-
-		console.log("Selected Option:", selectedOption);
-		navigate("/preview", { state: { selectedOption } });
-	};
-
+    console.log("Selected Option:", selectedOption);
+    navigate("/preview", { state: { selectedOption } });
+  };
 
   return (
     <div className={styles.background}>

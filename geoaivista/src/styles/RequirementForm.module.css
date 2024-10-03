@@ -107,3 +107,50 @@
 	box-shadow: 10px 10px 105px -10px rgb(2, 96, 52) !important;
 	transform: scale(0.96);
 }
+
+
+
+
+.imageEditor {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: row; /* Layout in a row to allow space for the toolbar */
+	background-color: #ffffff;
+	margin-top: 20px;
+	border-radius: 15px;
+	padding: 10px; /* Optional padding */
+  }
+  
+  .canvas-container {
+	max-width: 100%; /* Ensure it takes the full width available */
+	max-height: 80vh; /* Limit the maximum height to 80% of the viewport height */
+	width: auto; /* Let the width adjust automatically */
+	height: auto; /* Let the height adjust automatically */
+	border: 1px solid #ddd;
+  }
+  
+  .toolbar {
+	display: flex;
+	flex-direction: column; /* Stack items vertically */
+	justify-content: flex-start; /* Align items at the top */
+	margin-left: 20px; /* Add space between the image and the toolbar */
+  }
+  
+  .toolbar button, .toolbar .brush-settings {
+	margin-bottom: 20px; /* Add space between toolbar items */
+  }
+  
+  @media screen and (max-width: 768px) {
+	/* For smaller screens, stack the image and toolbar vertically */
+	.imageEditor {
+	  flex-direction: column; /* Stack vertically */
+	  align-items: center;
+	}
+  
+	.toolbar {
+	  margin-left: 0; /* Remove the margin when stacking */
+	  margin-top: 20px; /* Add margin to the top instead */
+	}
+  }
+  

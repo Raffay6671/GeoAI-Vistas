@@ -12,7 +12,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import AboutUs from "./pages/AboutUs/AboutUs"; // Adjust the path if necessary
 import RequirementForm from "./pages/RequirementForm/RequirementForm";
 import Gallery from "./pages/Gallery/Gallery";
-import RooftopDetection from "./pages/Rooftop/RooftopDetection";
+// import RooftopDetection from "./pages/Rooftop/RooftopDetection";
 
 // Import UserProvider to wrap the app
 import { UserProvider } from "./context/UserContext";
