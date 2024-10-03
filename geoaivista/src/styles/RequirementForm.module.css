@@ -154,3 +154,24 @@
 	}
   }
   
+
+  .toolbar-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3d8540;
+    color: white;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    margin-bottom: 20px; /* Add space between the buttons */
+    margin-right: 10px; /* Optional: If you want some space between horizontally aligned buttons */
+    transition: transform 0.2s, background-color 0.2s; /* Smooth hover transition */
+}
+
+.toolbar-btn:hover {
+    background-color: rgba(69, 160, 73);
+    box-shadow: inset 0 0 0 2px #012d18 !important;
+    box-shadow: 10px 10px 105px -10px rgb(2, 96, 52) !important;
+    transform: scale(0.96); /* Add hover effect */
+}
+
